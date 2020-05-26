@@ -1,0 +1,14 @@
+FROM openjdk:15-alpine
+
+ENV KAFKA_HOME=/opt/kafka
+ENV PATH=${PATH}:${KAFKA_HOME}/bin
+
+ADD kafka_2.12-2.5.0 ${KAFKA_HOME}
+ADD start.sh /
+
+# instalando bash
+RUN apk add --no-cache bash
+
+EXPOSE 2181 9092
+
+CMD /start.sh
